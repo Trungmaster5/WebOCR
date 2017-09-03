@@ -1,0 +1,23 @@
+<!--<p>printData = {{$ctrl.dataPrint}}</p>-->
+
+<!--<webcam channel="$ctrl.myChannel"></webcam>-->
+<!-- <md-button  class="md-primary md-raised" ng-click="$ctrl.statusCamButton()">{{$ctrl.statusCamera}}</md-button> -->
+<md-card layout-margin ng-if="$ctrl.showweb">
+    <div id="webcam" ng-hide="$ctrl.photo">
+        <webcam channel="$ctrl.webcam.channel"
+                on-streaming="$ctrl.webcam.onSuccess()"
+                on-error="$ctrl.webcam.onError(err)"
+                on-stream="$ctrl.webcam.onStream(stream)">
+        </webcam>
+        <md-button class="md-accent md-raised" ng-click="$ctrl.webcam.makeSnapshot()">TAKE PHOTO</md-button>
+        <canvas ng-hide="true" id="snapshot" width="500px" height="400px"></canvas>
+    </div>
+    <div ng-if="$ctrl.photo">
+        <div>
+            <!-- <img id="capturedImage" data-ng-src="{{'data:' + $ctrl.fotoContentType + ';base64,' + $ctrl.photo}}" style="width: 100%;"/> -->
+            <img id="capturedImage" data-ng-src="{{'data:' + $ctrl.fotoContentType + ';base64,' + $ctrl.photo}}"/>
+            <h4>WEBCAM NOTE</h4>
+        </div>
+        <!-- <md-button  class="md-primary md-raised"ng-click="$ctrl.downLoad()">Download</md-button> -->
+    </div>
+</md-card>
